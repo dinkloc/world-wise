@@ -1,11 +1,11 @@
 import AppNav from "../components/AppNav";
-
-const AppLayOut = () => {
+const AppLayout = () => {
   return (
     <div>
       <AppNav></AppNav>
+      <p>App</p>
     </div>
   );
 };
 
-export default AppLayOut;
+export default AppLayout;
