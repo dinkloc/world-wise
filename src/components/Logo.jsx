@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./Logo.module.css";
 
 function Logo() {
   return (
-    <Link to="/">
+    <NavLink to="/">
       <img src="/logo.png" alt="WorldWise logo" className={styles.logo} />
-    </Link>
+    </NavLink>
   );
 }
 
