@@ -1,4 +1,9 @@
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
+import { useCities } from "../context/CitiesContext";
+import Spinner from "./Spinner";
+import ButtonBack from "./ButtonBack";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -9,14 +14,22 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
+  const { getCity, currentCity, isLoading } = useCities();
   // TEMP DATA
-  const currentCity = {
-    cityName: "Lisbon",
-    emoji: "🇵🇹",
-    date: "2027-10-31T15:59:59.138Z",
-    notes: "My favorite city so far!",
-  };
-
+  // const currentCity = {
+  //   cityName: "Lisbon",
+  //   emoji: "🇵🇹",
+  //   date: "2027-10-31T15:59:59.138Z",
+  //   notes: "My favorite city so far!",
+  // };
+  const { id } = useParams();
+  useEffect(
+    function () {
+      getCity(id);
+    },
+    [id]
+  );
+  if (isLoading) return <Spinner></Spinner>;
   const { cityName, emoji, date, notes } = currentCity;
 
   return (
